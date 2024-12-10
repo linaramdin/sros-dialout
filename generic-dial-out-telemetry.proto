@@ -1,10 +1,15 @@
 syntax = "proto3";
 import "gnmi/gnmi.proto";
-package DialoutTelemetry;
-option go_package = "github.com/linaramdin/sros-dialout;DialoutTelemetry";
+package gnmi;
+option go_package = "github.com/linaramdin/sros-dialout;gnmi";
 
-service TelemetryService {
+service gNMIDialOut {
   rpc Publish(stream gnmi.SubscribeResponse) returns (stream PublishResponse);
 }
-message PublishResponse {}
 
+message PublishResponse {
+  int64 timestamp = 1;          // Timestamp in nanoseconds since Epoch.
+  gnmi.Path prefix = 2;              // Prefix used for paths in the message.
+  string alias = 3;
+  repeated gnmi.Path path = 4;     // Paths for which the notifications have been received.
+}

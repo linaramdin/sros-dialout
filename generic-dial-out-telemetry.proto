@@ -1,0 +1,10 @@
+syntax = "proto3";
+import "gnmi/gnmi.proto";
+package DialoutTelemetry;
+option go_package = "github.com/linaramdin/sros-dialout;DialoutTelemetry";
+
+service TelemetryService {
+  rpc Publish(stream gnmi.SubscribeResponse) returns (stream PublishResponse);
+}
+message PublishResponse {}
+

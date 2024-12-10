@@ -1,7 +1,7 @@
 syntax = "proto3";
 import "gnmi/gnmi.proto";
-package gnmi;
-option go_package = "github.com/linaramdin/sros-dialout;gnmi";
+package gnmigeneric;
+option go_package = "github.com/linaramdin/sros-dialout;gnmigeneric";
 
 service gNMIDialOut {
   rpc Publish(stream gnmi.SubscribeResponse) returns (stream PublishResponse);
